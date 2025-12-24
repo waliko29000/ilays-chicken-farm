@@ -222,6 +222,12 @@ footer{background:var(--dark-brown);color:#fff;text-align:center;padding:14px;ma
     <input id="location" placeholder="Location">
     <input id="phone" placeholder="Phone Number">
     <input id="quantity" type="number" placeholder="Number of Trays or Layers">
+    <!-- Egg size dropdown -->
+    <select id="eggSize" style="display:none;">
+      <option value="Large">Large</option>
+      <option value="Medium">Medium</option>
+    </select>
+    <!-- Layer month dropdown -->
     <select id="layerMonth" style="display:none;">
       <option value="4">4 Months</option>
       <option value="5">5 Months</option>
@@ -270,12 +276,16 @@ function openOrder(type){
   currentType=type;
   document.getElementById('orderModal').classList.add('active');
   const layerMonth = document.getElementById('layerMonth');
+  const eggSize = document.getElementById('eggSize');
   const quantityInput = document.getElementById('quantity');
+
   if(type==='layer'){
     layerMonth.style.display='block';
+    eggSize.style.display='none';
     quantityInput.placeholder='Number of Layers';
   } else {
     layerMonth.style.display='none';
+    eggSize.style.display='block';
     quantityInput.placeholder='Number of Trays';
   }
 }
@@ -288,6 +298,7 @@ function sendWhatsApp(){
   const phone=document.getElementById('phone').value.trim();
   const quantity=document.getElementById('quantity').value.trim();
   const month=document.getElementById('layerMonth').value;
+  const size=document.getElementById('eggSize').value;
 
   if(!name || !location || !phone || !quantity){
     alert("Please fill all fields"); return;
@@ -295,9 +306,9 @@ function sendWhatsApp(){
 
   let msg=`Order - iLays Chicken Farm\nName: ${name}\nLocation: ${location}\nPhone: ${phone}\n`;
   if(currentType==='egg'){
-    msg+=`Number of Trays: ${quantity}`;
+    msg+=`Product: Eggs\nSize: ${size}\nNumber of Trays: ${quantity}`;
   } else {
-    msg+=`Number of Layers: ${quantity}\nMonth of Layer: ${month}`;
+    msg+=`Product: Layers\nNumber of Layers: ${quantity}\nMonth of Layer: ${month}`;
   }
 
   const whatsappNumber="254729177741"; 
