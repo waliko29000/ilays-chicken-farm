@@ -359,7 +359,7 @@ footer{
       <a onclick="toggleView('about')">About Us</a>
       <a onclick="toggleView('services')">Services</a>
       <a onclick="toggleView('contact')">Contact Us</a>
-      <a class="order-btn" onclick="openOrder()">Order Now</a>
+      <a class="order-btn" onclick="gotoOrderSheets()">Order Now</a>
     </nav>
   </div>
 </header>
@@ -507,6 +507,16 @@ function toggleView(id){
     view.classList.add('active');
     activeView = id;
   }
+}
+
+// Header order button goes to Home sheets
+function gotoOrderSheets(){
+  if(activeView && activeView!=='home'){
+    document.getElementById(activeView).classList.remove('active');
+  }
+  document.getElementById('home').classList.add('active');
+  activeView='home';
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function openOrder(){
