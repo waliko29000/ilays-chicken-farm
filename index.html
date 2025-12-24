@@ -12,336 +12,92 @@
   --card:#fff;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:"Segoe UI", Arial, sans-serif;
-}
-
-body{
-  background:var(--light);
-  color:#333;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-}
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",Arial,sans-serif;}
+body{background:var(--light);color:#333;min-height:100vh;display:flex;flex-direction:column;scroll-behavior:smooth;}
 
 /* HEADER */
-header{
-  background:#fff;
-  border-bottom:2px solid #e5ddd5;
-}
-
-.header{
-  max-width:1200px;
-  margin:auto;
-  padding:15px 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
-}
-
-.logo{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.logo img{
-  width:52px;
-}
-
-.logo h1{
-  color:var(--brown);
-  font-size:22px;
-}
-
-/* NAV */
-nav{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-  margin-top:5px;
-}
-
-nav a{
-  text-decoration:none;
-  color:#333;
-  font-weight:600;
-  cursor:pointer;
-}
-
-nav a:hover{ color:var(--brown); }
-
-.order-btn{
-  background:var(--brown);
-  color:#fff;
-  padding:8px 18px;
-  border-radius:20px;
-}
+header{background:#fff;border-bottom:2px solid #e5ddd5;}
+.header{max-width:1200px;margin:auto;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
+.logo{display:flex;align-items:center;gap:12px;}
+.logo img{width:52px;}
+.logo h1{color:var(--brown);font-size:22px;}
+nav{display:flex;flex-wrap:wrap;gap:12px;margin-top:5px;}
+nav a{text-decoration:none;color:#333;font-weight:600;cursor:pointer;}
+nav a:hover{color:var(--brown);}
+.order-btn{background:var(--brown);color:#fff;padding:8px 18px;border-radius:20px;}
 
 /* DASHBOARD */
-.dashboard{
-  max-width:1200px;
-  margin:25px auto;
-  background:#fff;
-  padding:45px;
-  border-radius:14px;
-  box-shadow:0 6px 18px rgba(0,0,0,0.08);
-  flex:1;
-}
+.dashboard{max-width:1200px;margin:25px auto;background:#fff;padding:45px;border-radius:14px;box-shadow:0 6px 18px rgba(0,0,0,0.08);flex:1;}
 
 /* VIEWS */
-.view{ display:none; }
-.view.active{ display:block; }
+.view{display:none;opacity:0;transform:translateY(30px);transition:0.6s;}
+.view.active{display:block;opacity:1;transform:translateY(0);}
+.view h2{color:var(--dark-brown);font-size:28px;margin-bottom:15px;}
+.view p, .view ul{font-size:16px;line-height:1.6;}
 
-.view h2{
-  color:var(--dark-brown);
-  font-size:28px;
-  margin-bottom:15px;
-}
-
-.view p, .view ul{
-  font-size:16px;
-  line-height:1.6;
-}
-
-/* HOME EGG/LAYER SHEET */
+/* SHEETS */
 .egg-sheet{
-  display:flex;
-  flex-wrap:wrap;
-  background:#fff3e0;
-  margin-top:30px;
-  padding:25px;
-  border-radius:12px;
-  align-items:center;
-  justify-content:space-between;
-  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+  display:flex;flex-wrap:wrap;background:#fff3e0;margin-top:30px;padding:25px;border-radius:12px;
+  align-items:center;justify-content:space-between;box-shadow:0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
-
-.egg-sheet img{
-  width:200px;
-  border-radius:12px;
-}
-
-.egg-desc{
-  flex:1;
-  margin-left:25px;
-}
-
-.egg-desc h3{
-  color:var(--brown);
-  margin-bottom:12px;
-}
-
-.egg-desc p{
-  font-size:16px;
-  margin-bottom:15px;
-}
-
-.egg-desc button{
-  padding:12px 20px;
-  margin-right:10px;
-  border:none;
-  border-radius:25px;
-  background:var(--brown);
-  color:#fff;
-  font-size:16px;
-  cursor:pointer;
-}
+.egg-sheet:hover{transform:translateY(-5px);box-shadow:0 8px 20px rgba(0,0,0,0.2);}
+.egg-sheet img{width:200px;border-radius:12px;animation: float 4s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+.egg-desc{flex:1;margin-left:25px;}
+.egg-desc h3{color:var(--brown);margin-bottom:12px;}
+.egg-desc p{font-size:16px;margin-bottom:15px;}
+.egg-desc button{padding:12px 20px;margin-right:10px;border:none;border-radius:25px;background:var(--brown);color:#fff;font-size:16px;cursor:pointer;transition:0.3s;}
+.egg-desc button:hover{background:#593010;transform:scale(1.05);}
 
 /* SERVICES */
-.services{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:25px;
-}
-
-.service{
-  padding:25px;
-  border:1px solid #eee2d9;
-  border-radius:12px;
-  background:var(--card);
-}
-
-.service h4{
-  color:var(--brown);
-  margin-bottom:10px;
-}
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px;}
+.service{padding:25px;border:1px solid #eee2d9;border-radius:12px;background:var(--card);}
+.service h4{color:var(--brown);margin-bottom:10px;}
 
 /* CONTACT */
-.contact-box{
-  display:flex;
-  flex-wrap:wrap;
-  gap:30px;
-  margin-top:20px;
-}
-
-.contact-item{
-  flex:1;
-  min-width:280px;
-}
-
-.contact-item h3{
-  color:var(--brown);
-  margin-bottom:8px;
-}
-
-.contact-item p, .contact-item a{
-  font-size:16px;
-  margin-bottom:6px;
-  display:block;
-  color:#333;
-  text-decoration:none;
-}
-
-.contact-item a:hover{
-  text-decoration:underline;
-}
+.contact-box{display:flex;flex-wrap:wrap;gap:30px;margin-top:20px;}
+.contact-item{flex:1;min-width:280px;}
+.contact-item h3{color:var(--brown);margin-bottom:8px;}
+.contact-item p,.contact-item a{font-size:16px;margin-bottom:6px;display:block;color:#333;text-decoration:none;}
+.contact-item a:hover{text-decoration:underline;}
 
 /* FOOTER */
-footer{
-  background:var(--dark-brown);
-  color:#fff;
-  text-align:center;
-  padding:14px;
-  margin-top:auto;
-}
+footer{background:var(--dark-brown);color:#fff;text-align:center;padding:14px;margin-top:auto;}
 
-/* MODAL */
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.6);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:999;
-}
-
-.modal.active{ display:flex; }
-
-.modal-box{
-  background:#fff;
-  width:95%;
-  max-width:420px;
-  padding:30px;
-  border-radius:14px;
-}
-
-.modal-box h3{
-  color:var(--dark-brown);
-  margin-bottom:15px;
-  text-align:center;
-}
-
-.modal-box input{
-  width:100%;
-  padding:12px;
-  margin-bottom:12px;
-  border-radius:8px;
-  border:1px solid #ccc;
-  font-size:15px;
-}
-
-.modal-box button{
-  width:100%;
-  padding:12px;
-  border:none;
-  border-radius:25px;
-  background:var(--brown);
-  color:#fff;
-  font-size:16px;
-  cursor:pointer;
-}
-
-.close{
-  text-align:center;
-  margin-top:10px;
-  cursor:pointer;
-  color:#777;
-}
+/* MODALS */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;z-index:999;}
+.modal.active{display:flex;}
+.modal-box{background:#fff;width:95%;max-width:420px;padding:30px;border-radius:14px;animation: pop 0.4s ease;}
+@keyframes pop{0%{transform:scale(0.5);opacity:0;}100%{transform:scale(1);opacity:1;}}
+.modal-box h3{color:var(--dark-brown);margin-bottom:15px;text-align:center;}
+.modal-box input, .modal-box select{width:100%;padding:12px;margin-bottom:12px;border-radius:8px;border:1px solid #ccc;font-size:15px;}
+.modal-box button{width:100%;padding:12px;border:none;border-radius:25px;background:var(--brown);color:#fff;font-size:16px;cursor:pointer;transition:0.3s;}
+.modal-box button:hover{background:#593010;transform:scale(1.05);}
+.close{text-align:center;margin-top:10px;cursor:pointer;color:#777;}
 
 /* PRICE MODAL */
-.price-modal-box{
-  background:#fff3e0;
-  width:95%;
-  max-width:400px;
-  padding:25px;
-  border-radius:12px;
-  text-align:left;
-}
-
-.price-modal-box h4{
-  color:var(--brown);
-  margin-bottom:15px;
-}
-
-.price-modal-box ul{
-  list-style:circle;
-  margin-left:20px;
-  margin-bottom:15px;
-}
-
-.price-modal-box ul li{
-  margin-bottom:8px;
-}
+.price-modal-box{background:#fff3e0;width:95%;max-width:400px;padding:25px;border-radius:12px;text-align:left;animation: pop 0.4s ease;}
+.price-modal-box h4{color:var(--brown);margin-bottom:15px;}
+.price-modal-box ul{list-style:circle;margin-left:20px;margin-bottom:15px;}
+.price-modal-box ul li{margin-bottom:8px;}
 
 /* RESPONSIVE */
 @media (max-width:768px){
-  .header{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-
-  .egg-sheet{
-    flex-direction:column;
-    text-align:center;
-  }
-
-  .egg-desc{
-    margin-left:0;
-    margin-top:15px;
-  }
-
-  nav{
-    flex-direction:column;
-    width:100%;
-  }
-
-  nav a{
-    margin-left:0;
-    margin-bottom:8px;
-  }
+  .header{flex-direction:column;align-items:flex-start;}
+  .egg-sheet{flex-direction:column;text-align:center;}
+  .egg-desc{margin-left:0;margin-top:15px;}
+  nav{flex-direction:column;width:100%;}
+  nav a{margin-left:0;margin-bottom:8px;}
 }
-
 @media (max-width:480px){
-  .dashboard{
-    padding:20px;
-  }
-
-  .view h2{
-    font-size:24px;
-  }
-
-  .view p, .view ul li{
-    font-size:15px;
-  }
-
-  .egg-sheet img{
-    width:150px;
-  }
-
-  .egg-desc button{
-    font-size:14px;
-    padding:10px 15px;
-  }
-
-  .service p, .contact-item p, .contact-item a{
-    font-size:14px;
-  }
+  .dashboard{padding:20px;}
+  .view h2{font-size:24px;}
+  .view p,.view ul li{font-size:15px;}
+  .egg-sheet img{width:150px;}
+  .egg-desc button{font-size:14px;padding:10px 15px;}
+  .service p,.contact-item p,.contact-item a{font-size:14px;}
 }
 </style>
 </head>
@@ -353,7 +109,6 @@ footer{
       <img src="chicken.jpg.jpeg" alt="iLays Logo">
       <h1>iLays Chicken Farm</h1>
     </div>
-
     <nav>
       <a onclick="toggleView('home')">Home</a>
       <a onclick="toggleView('about')">About Us</a>
@@ -372,38 +127,37 @@ footer{
     <p>Here you will get fresh eggs and healthy Issa Brown layers with excellent quality. We guarantee freshness, affordability, and consistent supply for homes, shops, and institutions. Your satisfaction is our priority!</p>
 
     <!-- EGG SHEET -->
-    <div class="egg-sheet">
+    <div class="egg-sheet" data-type="egg">
       <img src="egg.jpg.jpeg" alt="Fresh Eggs">
       <div class="egg-desc">
         <h3>Fresh Eggs at a Good Price</h3>
         <p>Our eggs are collected and packed daily, ensuring premium quality. Perfect for households, hotels, restaurants, and retailers. Enjoy nutritious eggs at competitive prices.</p>
-        <button onclick="openOrder()">Order Now</button>
+        <button onclick="openOrder('egg')">Order Now</button>
         <button onclick="viewPrice('egg')">View Price</button>
       </div>
     </div>
 
     <!-- LAYER SHEET -->
-    <div class="egg-sheet">
+    <div class="egg-sheet" data-type="layer">
       <img src="layers.jpg.jpeg" alt="Chicken Layers">
       <div class="egg-desc">
         <h3>Healthy Chicken Layers for Sale</h3>
         <p>Looking to buy Issa Brown layers? iLays Chicken Farm provides healthy, vaccinated, and high-productivity layers for egg production. Perfect for homes, farms, or bulk orders.</p>
-        <button onclick="openOrder()">Order Now</button>
+        <button onclick="openOrder('layer')">Order Now</button>
         <button onclick="viewPrice('layer')">View Price</button>
       </div>
     </div>
+
   </div>
 
   <!-- ABOUT -->
   <div class="view" id="about">
     <h2>About iLays Chicken Farm</h2>
     <ul>
-      <li>iLays Chicken Farm is located in Garissa, dedicated to supplying premium fresh eggs and healthy Issa Brown layers.</li>
-      <li>We follow professional poultry farming practices to ensure high-quality production and customer satisfaction.</li>
-      <li>Our mission is to deliver fresh eggs daily while maintaining affordability and consistency.</li>
-      <li>We pride ourselves on professionalism, customer care, and sustainable farming practices.</li>
-      <li>Trusted supplier across Kenya for households, retailers, hotels, and institutions.</li>
-      <li>Reliable supply, healthy products, and excellent service for all customers.</li>
+      <li>Located in Garissa, supplying premium fresh eggs and healthy Issa Brown layers.</li>
+      <li>Professional poultry farming for high-quality production and satisfaction.</li>
+      <li>Daily fresh eggs at affordable prices.</li>
+      <li>Trusted supplier across Kenya for homes, retailers, hotels, and institutions.</li>
     </ul>
   </div>
 
@@ -430,35 +184,26 @@ footer{
   <div class="view" id="contact">
     <h2>Contact Us</h2>
     <p>We’re here to help! Reach out for questions, feedback, or support. Our dedicated team is always ready to assist you.</p>
-    
     <div class="contact-box">
       <div class="contact-item">
         <h3>Customer Support</h3>
         <p>Email: <strong>ilayschicken@email.com</strong></p>
         <p>Response within 24 hours.</p>
       </div>
-
       <div class="contact-item">
         <h3>Phone Support</h3>
         <p>Call: <strong>+254729177741</strong></p>
         <p>Available 24hrs daily.</p>
       </div>
-
       <div class="contact-item">
         <h3>Mailing Address</h3>
         <p>iLays Chicken Farm Headquarters,<br>Garissa, Kenya</p>
       </div>
-
       <div class="contact-item">
         <h3>Social Media</h3>
         <a href="https://www.facebook.com/" target="_blank">Facebook</a>
         <a href="https://www.instagram.com/" target="_blank">Instagram</a>
         <a href="https://www.tiktok.com/" target="_blank">TikTok</a>
-      </div>
-
-      <div class="contact-item">
-        <h3>Business Inquiries</h3>
-        <p>Email: <strong>business@ilayschicken.com</strong></p>
       </div>
     </div>
   </div>
@@ -476,7 +221,12 @@ footer{
     <input id="name" placeholder="Full Name">
     <input id="location" placeholder="Location">
     <input id="phone" placeholder="Phone Number">
-    <input id="trays" type="number" placeholder="Number of Trays or Layers">
+    <input id="quantity" type="number" placeholder="Number of Trays or Layers">
+    <select id="layerMonth" style="display:none;">
+      <option value="4">4 Months</option>
+      <option value="5">5 Months</option>
+      <option value="6">6 Months</option>
+    </select>
     <button onclick="sendWhatsApp()">Submit Order</button>
     <div class="close" onclick="closeOrder()">Cancel</div>
   </div>
@@ -486,32 +236,29 @@ footer{
 <div class="modal" id="priceModal">
   <div class="modal-box price-modal-box" id="priceContent">
     <h4>Price Details</h4>
-    <ul id="priceList">
-      <!-- Prices dynamically inserted here -->
-    </ul>
+    <ul id="priceList"></ul>
     <div class="close" onclick="closePrice()">Close</div>
   </div>
 </div>
 
 <script>
-let activeView = 'home';
+let activeView='home';
+let currentType='egg';
 
 function toggleView(id){
-  const view = document.getElementById(id);
-  if(view.classList.contains('active')){
-    view.classList.remove('active');
+  if(document.getElementById(id).classList.contains('active')){
+    document.getElementById(id).classList.remove('active');
     document.getElementById('home').classList.add('active');
-    activeView = 'home';
-  } else {
-    if(activeView) document.getElementById(activeView).classList.remove('active');
-    view.classList.add('active');
-    activeView = id;
+    activeView='home';
+  }else{
+    document.getElementById(activeView).classList.remove('active');
+    document.getElementById(id).classList.add('active');
+    activeView=id;
   }
 }
 
-// Header order button goes to Home sheets
 function gotoOrderSheets(){
-  if(activeView && activeView!=='home'){
+  if(activeView!=='home'){
     document.getElementById(activeView).classList.remove('active');
   }
   document.getElementById('home').classList.add('active');
@@ -519,59 +266,62 @@ function gotoOrderSheets(){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function openOrder(){
+function openOrder(type){
+  currentType=type;
   document.getElementById('orderModal').classList.add('active');
+  const layerMonth = document.getElementById('layerMonth');
+  const quantityInput = document.getElementById('quantity');
+  if(type==='layer'){
+    layerMonth.style.display='block';
+    quantityInput.placeholder='Number of Layers';
+  } else {
+    layerMonth.style.display='none';
+    quantityInput.placeholder='Number of Trays';
+  }
 }
 
-function closeOrder(){
-  document.getElementById('orderModal').classList.remove('active');
-}
+function closeOrder(){ document.getElementById('orderModal').classList.remove('active'); }
 
 function sendWhatsApp(){
-  const name = document.getElementById('name').value.trim();
-  const location = document.getElementById('location').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-  const trays = document.getElementById('trays').value.trim();
+  const name=document.getElementById('name').value.trim();
+  const location=document.getElementById('location').value.trim();
+  const phone=document.getElementById('phone').value.trim();
+  const quantity=document.getElementById('quantity').value.trim();
+  const month=document.getElementById('layerMonth').value;
 
-  if(!name || !location || !phone || !trays){
-    alert("Please fill all fields");
-    return;
+  if(!name || !location || !phone || !quantity){
+    alert("Please fill all fields"); return;
   }
 
-  const message =
-`Order - iLays Chicken Farm
-Name: ${name}
-Location: ${location}
-Phone: ${phone}
-Quantity: ${trays}`;
+  let msg=`Order - iLays Chicken Farm\nName: ${name}\nLocation: ${location}\nPhone: ${phone}\n`;
+  if(currentType==='egg'){
+    msg+=`Number of Trays: ${quantity}`;
+  } else {
+    msg+=`Number of Layers: ${quantity}\nMonth of Layer: ${month}`;
+  }
 
-  const whatsappNumber = "254729177741"; 
-  const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-  window.open(url,"_blank");
+  const whatsappNumber="254729177741"; 
+  window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`,"_blank");
   closeOrder();
 }
 
 // Price Modal
 function viewPrice(type){
-  const modal = document.getElementById('priceModal');
-  const list = document.getElementById('priceList');
-  list.innerHTML = '';
-
+  const modal=document.getElementById('priceModal');
+  const list=document.getElementById('priceList');
+  list.innerHTML='';
   if(type==='egg'){
-    list.innerHTML += '<li>Large Eggs: 1 Tray @ KSH 400</li>';
-    list.innerHTML += '<li>Medium Eggs: 1 Tray @ KSH 370</li>';
-  } else if(type==='layer'){
-    list.innerHTML += '<li>4 Months: @ KSH 700 each</li>';
-    list.innerHTML += '<li>5 Months: @ KSH 770 each</li>';
-    list.innerHTML += '<li>6 Months: @ KSH 750 each</li>';
+    list.innerHTML+='<li>Large Eggs: 1 Tray @ KSH 400</li>';
+    list.innerHTML+='<li>Medium Eggs: 1 Tray @ KSH 370</li>';
+  }else if(type==='layer'){
+    list.innerHTML+='<li>4 Months: @ KSH 700 each</li>';
+    list.innerHTML+='<li>5 Months: @ KSH 770 each</li>';
+    list.innerHTML+='<li>6 Months: @ KSH 750 each</li>';
   }
-
   modal.classList.add('active');
 }
 
-function closePrice(){
-  document.getElementById('priceModal').classList.remove('active');
-}
+function closePrice(){ document.getElementById('priceModal').classList.remove('active'); }
 </script>
 
 </body>
