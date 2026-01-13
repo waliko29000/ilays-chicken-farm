@@ -328,7 +328,7 @@ function sendWhatsApp(){
     alert("Please fill all fields"); return;
   }
 
-  let msg=`Order - iLays Chicken Farm\nName: ${name}\nLocation: ${location}\nPhone: ${phone}\n`;
+  let msg=`Order - ILays Poultry Farm\nName: ${name}\nLocation: ${location}\nPhone: ${phone}\n`;
   if(currentType==='egg'){
     msg+=`Product: Eggs\nSize: ${size}\nNumber of Trays: ${quantity}`;
   } else {
@@ -351,7 +351,7 @@ function viewPrice(type){
   }else if(type==='layer'){
     list.innerHTML+='<li>4 Months: @ KSH 700 each</li>';
     list.innerHTML+='<li>5 Months: @ KSH 770 each</li>';
-    list.innerHTML+='<li>6 Months: @ KSH 750 each</li>';
+    list.innerHTML+='<li>6 Months: @ KSH 800 each</li>';
   }
   modal.classList.add('active');
 }
